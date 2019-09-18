@@ -1,0 +1,17 @@
+#!/bin/bash 
+
+
+
+function run {
+    if ! pgrep $1 > /dev/null ;
+    then
+        $@&
+    fi
+}
+
+
+
+# Run Programs
+run numlockx
+run mpd
+run emacs --daemon
