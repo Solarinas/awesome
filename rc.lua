@@ -377,7 +377,14 @@ clientkeys = gears.table.join(
         {description = "(un)maximize horizontally", group = "client"}),
 
     -- Custom Shortcuts
-    awful.key({ modkey }, "d", function () awful.util.spawn("rofi -show drun") end)
+
+    -- Application launcher
+    awful.key({ modkey }, "d", function () awful.util.spawn("rofi -show drun") end),
+    
+    -- Volume control
+    awful.key({ },  "XF86AudioRaiseVolume" ,  function () awful.util.spawn("pactl set-sink-volume 1 +5%") end),
+    awful.key({ },  "XF86AudioLowerVolume" ,  function () awful.util.spawn("pactl set-sink-volume 1 -5%") end),
+    awful.key({ },  "XF86AudioMute" ,  function () awful.util.spawn("pactl set-sink-mute 1 toggle") end)
 )
 
 -- Bind all key numbers to tags.
