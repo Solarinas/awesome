@@ -380,6 +380,11 @@ clientkeys = gears.table.join(
 
     -- Application launcher
     awful.key({ modkey }, "d", function () awful.util.spawn("rofi -show drun") end),
+
+    -- Screenshots
+    awful.key({ },  "Print" ,  function () awful.util.spawn("/home/solarinas/.scripts/screenshot.sh -u") end),
+    awful.key({ "Shift" },  "Print" ,  function () awful.util.spawn("/home/solarinas/.scripts/screenshot.sh -s") end),
+    awful.key({ modkey },  "Print" ,  function () awful.util.spawn("/home/solarinas/.scripts/screenshot.sh -m") end),
     
     -- Volume control
     awful.key({ },  "XF86AudioRaiseVolume" ,  function () awful.util.spawn("pactl set-sink-volume 1 +5%") end),
