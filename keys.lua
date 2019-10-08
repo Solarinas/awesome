@@ -3,6 +3,7 @@ local awful = require("awful")
 local naughty = require("naughty")
 local gears = require("gears")
 local beautiful = require("beautiful")
+local menubar = require("menubar")
 
 local keys = {}
 
