@@ -87,7 +87,7 @@ screen_height = awful.screen.focused().geometry.height
 awful.layout.layouts = {
     awful.layout.suit.tile,
     awful.layout.suit.floating,
-    awful.layout.suit.max,
+    --awful.layout.suit.max,
     --awful.layout.suit.spiral,
     --awful.layout.suit.spiral.dwindle,
     --awful.layout.suit.tile.top,
@@ -190,6 +190,7 @@ screen.connect_signal("property::geometry", set_wallpaper)
 -- Notifications
 -- ================================================== 
 beautiful.notification_icon_size = 100
+beautiful.notification_border_radius = dpi(6)
 
 -- Tags
 -- ==================================================
