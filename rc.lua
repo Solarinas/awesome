@@ -66,16 +66,12 @@ editor_cmd = terminal .. "-e" .. editor
 -- Anti-alias
 anti_aliasing = true
 
--- Set modkey to super key
-modkey = "Mod4"
-
 
 -- My Libraries
 -- ==================================================
 
 -- Keyboard shortcuts
 local keys = require("keys")
---require("notifications")
 
 -- Layouts
 -- ==================================================
