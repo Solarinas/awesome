@@ -3,18 +3,22 @@
 --   by Yauhen Kirylau                    --
 ---------------------------------------------
 
+local theme_name = "xresources"
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
+local gfs = require("gears.filesystem")
+local themes_path = gfs.get_themes_dir()
 local xrdb = xresources.get_current_theme()
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 
 -- inherit default theme
-local theme = dofile(themes_path.."default/theme.lua")
+-- local theme = dofile(themes_path.."default/theme.lua")
+local theme = {}
 -- load vector assets' generators for this theme
 
-theme.font          = "sans 8"
+theme.font          = "Inconsolata Bold 10"
 
 theme.bg_normal     = xrdb.background
 theme.bg_focus      = xrdb.color12

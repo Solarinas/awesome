@@ -182,9 +182,9 @@ keys.clientkeys = gears.table.join(
     awful.key({ modkey },  "Print" ,  function () awful.util.spawn("/home/solarinas/.scripts/screenshot.sh -m") end),
     
     -- Volume control
-    awful.key({ },  "XF86AudioRaiseVolume" ,  function () awful.util.spawn("pactl set-sink-volume 2 +5%") end),
-    awful.key({ },  "XF86AudioLowerVolume" ,  function () awful.util.spawn("pactl set-sink-volume 2 -5%") end),
-    awful.key({ },  "XF86AudioMute" ,  function () awful.util.spawn("pactl set-sink-mute 2 toggle") end)
+    awful.key({ },  "XF86AudioRaiseVolume" ,  function () awful.util.spawn("pactl set-sink-volume 1 +5%") end),
+    awful.key({ },  "XF86AudioLowerVolume" ,  function () awful.util.spawn("pactl set-sink-volume 1 -5%") end),
+    awful.key({ },  "XF86AudioMute" ,  function () awful.util.spawn("pactl set-sink-mute 1 toggle") end)
 
 )
 

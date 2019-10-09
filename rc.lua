@@ -4,9 +4,29 @@
 ░▀░▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀
 --]]
 
+local theme_collection = {
+    "default",             -- 1 --
+    "gtk",                 -- 2 --
+    "sky",                 -- 3 --
+    "xresources",          -- 4 --
+    "blackburn",           -- 5 --
+    "copland",             -- 6 --
+    "dremora",             -- 7 --
+    "holo",                -- 8 --
+    "multicolor",          -- 9 --
+    "powerarrow",         --- 10 ---
+    "powerarrow-dark",    --- 11 ---
+    "rainbow",            --- 12 ---
+    "steamburn",          --- 13 ---
+    "vertex",              --- 14 ---
+
+}
+
+local theme_name = theme_collection[7]
+
 -- Theme Handling library
 local beautiful = require("beautiful")
-local theme_dir = os.getenv("HOME") .. "/.config/awesome/themes"
+local theme_dir = "/home/solarinas/.config/awesome/themes/"
 
 -- Load Xresources
 local xresources = require("beautiful.xresources")
@@ -26,8 +46,12 @@ require("awful.autofocus")
 local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
+-- Load external modules
+local lain = require("lain")
+local freedesktop = require("freedesktop")
+
 -- Load theme
-beautiful.init(gears.filesystem.get_themes_dir() .. "xresources/theme.lua")
+beautiful.init(theme_dir .. theme_name .. "/theme.lua")
 
 -- Autostart programs 
 awful.spawn.with_shell("~/.config/awesome/autostart.sh")
