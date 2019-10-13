@@ -173,8 +173,8 @@ keys.clientkeys = gears.table.join(
     awful.key({ modkey }, "d", function () awful.util.spawn("rofi -show drun") end),
 
     -- Text Editor
-    awful.key({modkey }, "e", function () awful.util.spawn("emacsclient -nc") end),
-    awful.key({modkey, shift }, "e", function () awful.util.spawn("emacsclient -nc ~/.config/awesome/rc.lua") end),
+    awful.key({modkey }, "e", function () awful.util.spawn(terminal.. " -e".. editor) end),
+    awful.key({modkey, shift }, "e", function () awful.util.spawn(terminal.. " -e".. editor.. " /home/solarinas/.config/awesome/rc.lua") end),
 
     -- Screenshots
     awful.key({ },  "Print" ,  function () awful.util.spawn("/home/solarinas/.scripts/screenshot.sh -u") end),
@@ -182,9 +182,9 @@ keys.clientkeys = gears.table.join(
     awful.key({ modkey },  "Print" ,  function () awful.util.spawn("/home/solarinas/.scripts/screenshot.sh -m") end),
     
     -- Volume control
-    awful.key({ },  "XF86AudioRaiseVolume" ,  function () awful.util.spawn("pactl set-sink-volume 1 +5%") end),
-    awful.key({ },  "XF86AudioLowerVolume" ,  function () awful.util.spawn("pactl set-sink-volume 1 -5%") end),
-    awful.key({ },  "XF86AudioMute" ,  function () awful.util.spawn("pactl set-sink-mute 1 toggle") end)
+    awful.key({ },  "XF86AudioRaiseVolume" ,  function () awful.util.spawn("pactl set-sink-volume 2 +5%") end),
+    awful.key({ },  "XF86AudioLowerVolume" ,  function () awful.util.spawn("pactl set-sink-volume 2 -5%") end),
+    awful.key({ },  "XF86AudioMute" ,  function () awful.util.spawn("pactl set-sink-mute 2 toggle") end)
 
 )
 

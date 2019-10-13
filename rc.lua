@@ -4,17 +4,6 @@
 ░▀░▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀
 --]]
 
-local theme_collection = {
-    "default",             -- 1 --
-    "gtk",                 -- 2 --
-    "sky",                 -- 3 --
-    "xresources",          -- 4 --
-    "my_theme",            -- 5 --
-
-}
-
-local theme_name = theme_collection[4]
-
 -- Theme Handling library
 local beautiful = require("beautiful")
 local theme_dir = "/home/solarinas/.config/awesome/themes/"
@@ -36,9 +25,6 @@ require("awful.autofocus")
 -- Awesome hotkeys widget
 local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
-
--- Load theme
-beautiful.init(theme_dir .. theme_name .. "/theme.lua")
 
 -- Autostart programs 
 awful.spawn.with_shell("~/.config/awesome/autostart.sh")
@@ -66,11 +52,27 @@ do
     end)
 end
 
+-- Theme Handling
+-- ==================================================
+
+local theme_collection = {
+    "default",             -- 1 --
+    "gtk",                 -- 2 --
+    "sky",                 -- 3 --
+    "xresources",          -- 4 --
+    "my_theme",            -- 5 --
+
+}
+
+local theme_name = theme_collection[4]
+
+-- Load Theme 
+beautiful.init(theme_dir .. theme_name .. "/theme.lua")
 -- Variables
 -- ==================================================
 
 -- Default applications
-terminal = "kitty"
+terminal = "alacritty"
 editor = "nvim"
 editor_cmd = terminal .. "-e" .. editor
 
@@ -92,8 +94,8 @@ screen_width = awful.screen.focused().geometry.width
 screen_height = awful.screen.focused().geometry.height
 
 awful.layout.layouts = {
-    awful.layout.suit.tile,
     awful.layout.suit.floating,
+    awful.layout.suit.tile,
     --awful.layout.suit.max,
     --awful.layout.suit.spiral,
     --awful.layout.suit.spiral.dwindle,
