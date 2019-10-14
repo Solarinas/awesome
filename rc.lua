@@ -198,9 +198,16 @@ screen.connect_signal("property::geometry", set_wallpaper)
 
 -- Notifications
 -- ================================================== 
-beautiful.notification_icon_size = 100
-beautiful.notification_border_radius = dpi(6)
+local rrect = function(radius)
+    return function(cr, width, height)
+        gears.shape.rounded_rect(cr, width, height, radius)
+    end
+end
 
+beautiful.notification_icon_size = 100
+beautiful.notification_border_width = 5
+beautiful.notification_border_radius = dpi(6)
+beautiful.notification_shape = rrect(10)
 -- Tags
 -- ==================================================
 
@@ -209,7 +216,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag({ "1", "2", "3", "4", "5" }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
