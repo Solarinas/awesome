@@ -207,7 +207,7 @@ end
 
 beautiful.notification_icon_size = 100
 beautiful.notification_max_width = 300
-beautiful.notification_max_width = 500
+beautiful.notification_max_height = 500
 
 beautiful.notification_border_width = 5
 beautiful.notification_border_radius = dpi(6)
