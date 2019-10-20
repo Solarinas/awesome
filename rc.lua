@@ -64,15 +64,16 @@ local theme_collection = {
 
 }
 
-local theme_name = theme_collection[4]
+local theme_name = theme_collection[5]
 
 -- Load Theme 
 beautiful.init(theme_dir .. theme_name .. "/theme.lua")
+
 -- Variables
 -- ==================================================
 
 -- Default applications
-terminal = "alacritty"
+terminal = "kitty"
 editor = "nvim"
 editor_cmd = terminal .. "-e" .. editor
 
@@ -96,11 +97,11 @@ screen_height = awful.screen.focused().geometry.height
 awful.layout.layouts = {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
+    --awful.layout.suit.fair,
     --awful.layout.suit.max,
     --awful.layout.suit.spiral,
     --awful.layout.suit.spiral.dwindle,
     --awful.layout.suit.tile.top,
-    --awful.layout.suit.fair,
     --awful.layout.suit.fair.horizontal,
     --awful.layout.suit.tile.left,
     --awful.layout.suit.tile.bottom,
@@ -204,7 +205,6 @@ local rrect = function(radius)
     end
 end
 
-
 beautiful.notification_icon_size = 100
 beautiful.notification_max_width = 300
 beautiful.notification_max_height = 500
@@ -304,6 +304,7 @@ awful.rules.rules = {
           "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
           "Wpa_gui",
           "veromix",
+          "Gnome-calculator",
           "xtightvncviewer"},
 
         -- Note that the name property shown in xprop might be set slightly after creation of the client

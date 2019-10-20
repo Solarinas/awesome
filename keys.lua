@@ -120,24 +120,30 @@ keys.globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"}),
+    --awful.key({ modkey }, "p", function() menubar.show() end,
+              --{description = "show the menubar", group = "launcher"}),
 
     -- Custom Shortcuts
 
     -- Application launcher
     awful.key({ modkey,      }, "d", function () awful.util.spawn("rofi -show drun") end,
-        {description = "Rofi Application launcher", group = "Rofi"}),
+        {description = "Application launcher", group = "rofi"}),
+    awful.key({ modkey,      }, "e", function () awful.util.spawn("rofimoji") end,
+        {description = "Emoji Viewer", group = "rofi"}),
+    awful.key({ modkey,      }, "p", function () awful.util.spawn("bwmenu") end,
+        {description = "Password Manager", group = "rofi"}),
+
+
 
     -- Kill Program
     awful.key({ modkey , shift }, "q", function() awful.util.spawn("xkill -id $(xdotool getactivewindow)") end,
         {description = "kill", group = "client"}),
 
     -- Text Editor
-    awful.key({modkey,       }, "e", function () awful.util.spawn(terminal.. " -e".. editor) end,
-        {description = "Open text editor", group = "launcher"}),
-    awful.key({modkey, shift }, "e", function () awful.util.spawn(terminal.. " -e".. editor.. " /home/solarinas/.config/awesome/rc.lua") end,
-        {description = "Edit awesome config", group = "launcher"}),
+    --awful.key({modkey,       }, "e", function () awful.util.spawn(terminal.. " -e".. editor) end,
+        --{description = "Open text editor", group = "launcher"}),
+    --awful.key({modkey, shift }, "e", function () awful.util.spawn(terminal.. " -e".. editor.. " /home/solarinas/.config/awesome/rc.lua") end,
+        --{description = "Edit awesome config", group = "launcher"}),
 
     -- Program Shortcuts
     awful.key({ modkey,      }, "r", function () awful.util.spawn(terminal.. " -e ranger") end,
@@ -152,9 +158,9 @@ keys.globalkeys = gears.table.join(
         {description = "Screenshot primary monitor", group = "screenshot"}),
     
     -- Volume control
-    awful.key({ },  "XF86AudioRaiseVolume" ,  function () awful.util.spawn("pactl set-sink-volume 2 +5%") end),
-    awful.key({ },  "XF86AudioLowerVolume" ,  function () awful.util.spawn("pactl set-sink-volume 2 -5%") end),
-    awful.key({ },  "XF86AudioMute" ,  function () awful.util.spawn("pactl set-sink-mute 2 toggle") end)
+    awful.key({ },  "XF86AudioRaiseVolume" ,  function () awful.util.spawn("pactl set-sink-volume 1 +5%") end),
+    awful.key({ },  "XF86AudioLowerVolume" ,  function () awful.util.spawn("pactl set-sink-volume 1 -5%") end),
+    awful.key({ },  "XF86AudioMute" ,  function () awful.util.spawn("pactl set-sink-mute 1 toggle") end)
 
 )
 

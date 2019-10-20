@@ -17,5 +17,6 @@ run mpd
 run feh --bg-scale ~/.wallpapers/bg1.png ~/.wallpapers/bg2.png
 run caffeine
 run blueman-applet
+run nm-applet
 run redshift
 run compton -b

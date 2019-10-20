@@ -9,18 +9,15 @@ local xrdb = xresources.get_current_theme()
 local theme_name = "my_theme"
 local theme_assets = require("beautiful.theme_assets")
 
-
-local theme = {}
-
 -- This makes it easier to align panels
 local awful = require("awful")
 local screen_width = awful.screen.focused().geometry.width
 local screen_height = awful.screen.focused().geometry.height
 
---theme.wallpaper = os.getenv("HOME") .. "/.wallpapers/bg1.png"
+local theme = {}
 
--- Set theme font 
-theme.font = "Inconsolata Bold 10"
+-- Set theme font
+theme.font          = "Inconsolata Bold 10"
 
 -- Get colors from Xresources
 theme.xbackground   = xrdb.background
@@ -54,32 +51,40 @@ theme.fg_focus      = theme.bg_normal
 theme.fg_urgent     = theme.bg_normal
 theme.fg_minimize   = theme.bg_normal
 
+theme.tooltip_fg = theme.fg_normal
+theme.tooltip_bg = theme.bg_normal
+
 -- Gaps
 theme.useless_gap = dpi(5)
-theme.screen_margin(5)
 
 -- Borders
-theme.border_width = dpi(2)
+theme.border_width = dpi(0)
 theme.border_normal = theme.xcolor0
 theme.border_focus = theme.bg_focus
 theme.border_marked = theme.xcolor10
 
--- Variable for themeing the menu
-theme.menu_submenu_icon = themes.path.. "default/submenu.png"
+theme.tooltip_fg = theme.fg_normal
+theme.tooltip_bg = theme.bg_normal
+
+-- Theme the menu
+theme.menu_submenu_icon = themes_path.."default/submenu.png"
 theme.menu_height = dpi(16)
 theme.menu_width  = dpi(100)
 
--- Set Icon theme 
+-- Recolor Layout icons:
+theme = theme_assets.recolor_layout(theme, theme.fg_normal)
+
+-- Set Icon theme
 theme.icon_theme = nil
 
--- Generate Awesome Icon 
+-- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(
     theme.menu_height, theme.bg_focus, theme.fg_focus
 )
 
--- Generate taglist squares
+-- Generate taglist squares:
 local taglist_square_size = dpi(4)
-theme.taglist_square_sel = theme_assets.taglist_square_sel(
+theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
     taglist_square_size, theme.fg_normal
 )
 theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
@@ -87,3 +92,4 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 )
 
 return theme
+
