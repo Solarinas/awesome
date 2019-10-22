@@ -56,6 +56,7 @@ theme.tooltip_bg = theme.bg_normal
 
 -- Gaps
 theme.useless_gap = dpi(5)
+theme.screen_margin = dpi(5)
 
 -- Borders
 theme.border_width = dpi(0)
@@ -65,6 +66,29 @@ theme.border_marked = theme.xcolor10
 
 theme.tooltip_fg = theme.fg_normal
 theme.tooltip_bg = theme.bg_normal
+
+-- Rounded corners
+theme.border_radius = dpi(6)
+
+-- Notifications
+theme.notification_position = "top_right"
+theme.notification_border_width = dpi(0)
+
+theme.notification_border_radius = theme.border_radius
+theme.notification_border_color = theme.xcolor10
+theme.notification_bg = theme.xbackground
+theme.notification_fg = theme.xforeground
+theme.notification_crit_bg = theme.xbackground
+theme.notification_crit_fg = theme.xcolor1
+
+theme.notification_icon_size = dpi(80)
+theme.notifcation_height = dpi(80)
+theme.notifcation_width = dpi(300)
+theme.notfication_margin = dpi(16)
+theme.notifcation_opacity = 1
+theme.notfication_font = "Inconsolata Bold 10"
+theme.notification_padding = theme.screen_margin * 2
+theme.notification_spacing = theme.screen_margin * 2
 
 -- Theme the menu
 theme.menu_submenu_icon = themes_path.."default/submenu.png"

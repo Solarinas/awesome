@@ -90,6 +90,9 @@ local keys = require("keys")
 -- Custom functions
 local helpers = require("helpers")
 
+-- Notifcations
+-- require("notifications")
+
 -- Layouts
 -- ==================================================
 
@@ -200,15 +203,6 @@ end
 -- Re-set wallpaper when a screen's geometry changes
 screen.connect_signal("property::geometry", set_wallpaper)
 
--- Notifications
--- ================================================== 
-beautiful.notification_icon_size = 100
-beautiful.notification_max_width = 300
-beautiful.notification_max_height = 500
-
-beautiful.notification_border_width = 5
-beautiful.notification_border_radius = dpi(6)
-beautiful.notification_shape = helpers.rrect(10)
 -- Tags
 -- ==================================================
 
@@ -343,6 +337,26 @@ client.connect_signal("manage", function (c)
         awful.placement.no_offscreen(c)
     end
 end)
+
+-- Apply rounded corners to clients
+if beautiful.border_radius ~= 0 then
+    client.connect_signal("manage", function (c, startup)
+        if not c.fullscreen and not c.maximized then 
+            c.shape = helpers.rrect(beautiful.border_radius)
+        end
+    end)
+
+    local function no_round_corners (c)
+        if c.fullscreen or c.maximized then 
+            c.shape = gears.shape.rectangle
+        else 
+            c.shape = helpers.rrect(beautiful.border_radius)
+        end
+    end
+
+    client.connect_signal("property::fullscreen", no_round_corners)
+    client.connect_signal("property::maximized", no_round_corners)
+end
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)
