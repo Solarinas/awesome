@@ -87,6 +87,9 @@ anti_aliasing = true
 -- Keyboard shortcuts
 local keys = require("keys")
 
+-- Custom functions
+local helpers = require("helpers")
+
 -- Layouts
 -- ==================================================
 
@@ -199,19 +202,13 @@ screen.connect_signal("property::geometry", set_wallpaper)
 
 -- Notifications
 -- ================================================== 
-local rrect = function(radius)
-    return function(cr, width, height)
-        gears.shape.rounded_rect(cr, width, height, radius)
-    end
-end
-
 beautiful.notification_icon_size = 100
 beautiful.notification_max_width = 300
 beautiful.notification_max_height = 500
 
 beautiful.notification_border_width = 5
 beautiful.notification_border_radius = dpi(6)
-beautiful.notification_shape = rrect(10)
+beautiful.notification_shape = helpers.rrect(10)
 -- Tags
 -- ==================================================
 
