@@ -128,7 +128,7 @@ keys.globalkeys = gears.table.join(
     -- Application launcher
     awful.key({ modkey,      }, "d", function () awful.util.spawn("rofi -show drun") end,
         {description = "Application launcher", group = "rofi"}),
-    awful.key({ modkey,      }, "e", function () awful.util.spawn("rofimoji") end,
+    awful.key({ modkey,      }, "u", function () awful.util.spawn("rofimoji") end,
         {description = "Emoji Viewer", group = "rofi"}),
     awful.key({ modkey,      }, "p", function () awful.util.spawn("bwmenu") end,
         {description = "Password Manager", group = "rofi"}),
@@ -140,22 +140,37 @@ keys.globalkeys = gears.table.join(
         {description = "kill", group = "client"}),
 
     -- Text Editor
-    --awful.key({modkey,       }, "e", function () awful.util.spawn(terminal.. " -e".. editor) end,
-        --{description = "Open text editor", group = "launcher"}),
+    awful.key({modkey,       }, "e", function () awful.util.spawn("emacsclient -nc") end,
+        {description = "Open text editor", group = "launcher"}),
     --awful.key({modkey, shift }, "e", function () awful.util.spawn(terminal.. " -e".. editor.. " /home/solarinas/.config/awesome/rc.lua") end,
         --{description = "Edit awesome config", group = "launcher"}),
 
     -- Program Shortcuts
     awful.key({ modkey,      }, "r", function () awful.util.spawn(terminal.. " -e ranger") end,
-        {description = "Launch File Manager", group = "launcher"}),
+       {description = "Launch File Manager", group = "launcher"}),
+    awful.key({ modkey,      }, "t", function () awful.util.spawn(terminal.. " -e stig") end,
+       {description = "Launch Torrent client", group = "launcher"}),
+    awful.key({ modkey,      }, "m", function () awful.util.spawn(terminal.. " -e ncmpcpp") end,
+        {description = "Launch music player", group = "launcher"}),
+    awful.key({ modkey, shift     }, "m", function () awful.util.spawn(mail) end,
+        {description = "Launch E-mail Client", group = "launcher"}),
+    awful.key({ modkey,     }, "y", function () awful.util.spawn(terminal.. " -e ytop") end,
+        {description = "Launch System Monitor", group = "launcher"}),
+
+
 
     -- Screenshots
-    awful.key({ },  "Print" ,  function () awful.util.spawn("/home/solarinas/.scripts/screenshot.sh -u") end,
+    awful.key({ },  "Print" ,  function () awful.util.spawn("/home/solarinas/.scripts/screenshot -u") end,
         {description = "Screenshot focused program", group = "screenshot"}),
-    awful.key({ shift },  "Print" ,  function () awful.util.spawn("/home/solarinas/.scripts/screenshot.sh -s") end,
+    awful.key({ shift },  "Print" ,  function () awful.util.spawn("/home/solarinas/.scripts/screenshot -s") end,
         {description = "Screenshot Selection", group = "screenshot"}),
-    awful.key({ modkey },  "Print" ,  function () awful.util.spawn("/home/solarinas/.scripts/screenshot.sh -m") end,
+    awful.key({ modkey },  "Print" ,  function () awful.util.spawn("/home/solarinas/.scripts/screenshot -m") end,
         {description = "Screenshot primary monitor", group = "screenshot"}),
+
+    -- Media keys 
+    awful.key({ }, "XF86AudioPlay", function () awful.util.spawn("playerctl play-pause") end),
+    awful.key({ }, "XF86AudioNext", function () awful.util.spawn("playerctl next") end),
+    awful.key({ }, "XF86AudioPrev", function () awful.util.spawn("playerctl prev") end),
     
     -- Volume control
     awful.key({ },  "XF86AudioRaiseVolume" ,  function () awful.util.spawn("pactl set-sink-volume 1 +5%") end),

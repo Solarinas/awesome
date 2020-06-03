@@ -74,8 +74,9 @@ beautiful.init(theme_dir .. theme_name .. "/theme.lua")
 
 -- Default applications
 terminal = "kitty"
-editor = "nvim"
+editor = "emacs"
 editor_cmd = terminal .. "-e" .. editor
+mail = terminal .. " -e neomutt"
 
 -- Anti-alias
 anti_aliasing = true
@@ -93,6 +94,9 @@ local helpers = require("helpers")
 -- Notifcations
 -- require("notifications")
 
+-- Volume OSD
+-- require("module.volume-osd")
+
 -- Layouts
 -- ==================================================
 
@@ -101,8 +105,8 @@ screen_width = awful.screen.focused().geometry.width
 screen_height = awful.screen.focused().geometry.height
 
 awful.layout.layouts = {
-    awful.layout.suit.floating,
     awful.layout.suit.tile,
+    awful.layout.suit.floating,
     --awful.layout.suit.fair,
     --awful.layout.suit.max,
     --awful.layout.suit.spiral,
@@ -292,10 +296,10 @@ awful.rules.rules = {
           "Kruler",
           "MessageWin",  -- kalarm.
           "Sxiv",
-          "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
           "Wpa_gui",
           "veromix",
           "Gnome-calculator",
+	  "Alacritty",
           "xtightvncviewer"},
 
         -- Note that the name property shown in xprop might be set slightly after creation of the client
@@ -318,6 +322,8 @@ awful.rules.rules = {
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
+     { rule = { class = "Emacs" },
+     properties = { size_hints_honor = false } },
 }
 
 -- Signals
@@ -398,10 +404,17 @@ client.connect_signal("request::titlebars", function(c)
     }
 end)
 
+-- Prevent windows from mnimizing
+client.connect_signal("property::minimized", function(c)
+    c.minimized = false
+end)
+
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", {raise = false})
 end)
+
+
 
 --client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 --client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
