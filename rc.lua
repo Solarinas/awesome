@@ -26,8 +26,9 @@ require("awful.autofocus")
 local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
--- Autostart programs 
+-- Autostart programs
 awful.spawn.with_shell("~/.config/awesome/autostart.sh")
+
 
 -- Error Handling
 -- ================================================== 
@@ -69,14 +70,15 @@ local theme_name = theme_collection[5]
 -- Load Theme 
 beautiful.init(theme_dir .. theme_name .. "/theme.lua")
 
+-- Autostart programs
+awful.spawn.with_shell("~/.config/awesome/autostart.sh")
+
 -- Variables
 -- ==================================================
 
 -- Default applications
 terminal = "kitty"
-editor = "emacs"
-editor_cmd = terminal .. "-e" .. editor
-mail = terminal .. " -e neomutt"
+editor = "emacsclient -nc"
 
 -- Anti-alias
 anti_aliasing = true
@@ -91,11 +93,11 @@ local keys = require("keys")
 -- Custom functions
 local helpers = require("helpers")
 
--- Notifcations
--- require("notifications")
+-- Notifications
+require("notifications")
 
 -- Volume OSD
--- require("module.volume-osd")
+-- require("modules.volume-osd")
 
 -- Layouts
 -- ==================================================
@@ -107,7 +109,7 @@ screen_height = awful.screen.focused().geometry.height
 awful.layout.layouts = {
     awful.layout.suit.tile,
     awful.layout.suit.floating,
-    --awful.layout.suit.fair,
+    awful.layout.suit.fair,
     --awful.layout.suit.max,
     --awful.layout.suit.spiral,
     --awful.layout.suit.spiral.dwindle,
@@ -129,7 +131,7 @@ awful.layout.layouts = {
 myawesomemenu = {
     {"hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end},
     { "manual", terminal .. " -e man awesome"},
-    { "edit config", editor_cmd .. " " .. awesome.conffile },
+    { "edit config", editor .. " " .. awesome.conffile },
     { "restart", awesome.restart },
     { "quit", function () awesome.quit() end },
 }
@@ -300,6 +302,7 @@ awful.rules.rules = {
           "veromix",
           "Gnome-calculator",
 	  "Alacritty",
+	  "Wine",
           "xtightvncviewer"},
 
         -- Note that the name property shown in xprop might be set slightly after creation of the client
@@ -404,9 +407,14 @@ client.connect_signal("request::titlebars", function(c)
     }
 end)
 
--- Prevent windows from mnimizing
+-- Prevent windows from minimizing
 client.connect_signal("property::minimized", function(c)
     c.minimized = false
+end)
+
+-- Prevent windows from maximizing 
+client.connect_signal("property::maximized", function(c)
+    c.maximized = false
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.

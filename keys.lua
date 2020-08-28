@@ -140,7 +140,7 @@ keys.globalkeys = gears.table.join(
         {description = "kill", group = "client"}),
 
     -- Text Editor
-    awful.key({modkey,       }, "e", function () awful.util.spawn("emacsclient -nc") end,
+    awful.key({modkey,       }, "e", function () awful.util.spawn(editor) end,
         {description = "Open text editor", group = "launcher"}),
     --awful.key({modkey, shift }, "e", function () awful.util.spawn(terminal.. " -e".. editor.. " /home/solarinas/.config/awesome/rc.lua") end,
         --{description = "Edit awesome config", group = "launcher"}),
@@ -173,7 +173,8 @@ keys.globalkeys = gears.table.join(
     awful.key({ }, "XF86AudioPrev", function () awful.util.spawn("playerctl prev") end),
     
     -- Volume control
-    awful.key({ },  "XF86AudioRaiseVolume" ,  function () awful.util.spawn("pactl set-sink-volume 1 +5%") end),
+    awful.key({ },  "XF86AudioRaiseVolume" ,  function ()
+	  awful.util.spawn("pactl set-sink-volume 1 +5%") end),
     awful.key({ },  "XF86AudioLowerVolume" ,  function () awful.util.spawn("pactl set-sink-volume 1 -5%") end),
     awful.key({ },  "XF86AudioMute" ,  function () awful.util.spawn("pactl set-sink-mute 1 toggle") end)
 
